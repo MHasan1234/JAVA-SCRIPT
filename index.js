@@ -1,5 +1,5 @@
 //  console.log("Hello World!");
-//  console.log("Apna College");
+//  console.log("Welcome to Delhi");
  //let a = 10;
  //let b = 5;
  //console.log("sum is : ", a + b);
@@ -48,7 +48,7 @@
 //     console.log("you are in your 20s");
 // }
 
-let firstName = "shradha";
-if (firstName == "shradha") {
+let firstName = "mushir";
+if (firstName == "mushir") {
     console.log(`Welcome ${firstName}`);
 }
