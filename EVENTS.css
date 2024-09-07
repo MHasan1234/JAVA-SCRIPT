@@ -1,0 +1,18 @@
+.box {
+    height: 100px;
+    width: 100px;
+    background-color: pink;
+    border: 1px solid black;
+
+}
+
+#displayBox {
+    width: 200px;
+    height: 100px;
+    background-color:lightblue;
+    margin-top: 10px;
+    font-weight: bold;
+    display:flex;
+    align-items: center;
+    text-align: center;
+}
