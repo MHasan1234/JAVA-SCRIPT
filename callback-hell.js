@@ -1,21 +1,21 @@
-// h1 = document.querySelector("h1");
+h1 = document.querySelector("h1");
 
-// function changeColor(color, delay, nextColorChange) {
-//     setTimeout(() => {
-//         h1.style.color = color;
-//         if (nextColorChange) nextColorChange();
-//     },delay);
-// }
+function changeColor(color, delay, nextColorChange) {
+    setTimeout(() => {
+        h1.style.color = color;
+        if (nextColorChange) nextColorChange();
+    },delay);
+}
 
-// changeColor("red", 1000, () => {
-//     changeColor("yellow", 1000, () => {
-//         changeColor("green", 1000, () => {
-//             changeColor("orange", 1000, () => {
-//                changeColor("blue", 1000);
-//             });
-//         });
-//     });
-// });
+changeColor("red", 1000, () => {
+    changeColor("yellow", 1000, () => {
+        changeColor("green", 1000, () => {
+            changeColor("orange", 1000, () => {
+               changeColor("blue", 1000);
+            });
+        });
+    });
+});
 
 // callback nesting -> callback hell
 
@@ -84,4 +84,106 @@ savetoDb("Mushir")
 .catch(() => {
     console.log("promise was rejected");
 });
-// savetoDb("Hello World");
+savetoDb("Hello World");
+
+// // REFRACTING OLD COLOR CODE USING promises
+h1 = document.querySelector("h1");
+
+function changeColor(color,delay){
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            h1.style.color = color;
+            resolve("color changed!");
+           } ,delay) ;
+      });
+    }      
+
+changeColor("red",1000)
+.then((result) => {
+    console.log("color changed to red: ", result);
+    return changeColor("yellow",1000);
+})
+
+.then((result) => {
+    console.log("color changed to yellow: ", result);
+    return changeColor("green", 1000);
+})
+
+.then((result) => {
+    console.log("color changed to green: ", result);
+    return changeColor("orange", 1000);
+})
+
+.then((result) => {
+    console.log("color changed to orange: ", result);
+    return changeColor("blue", 1000);
+})
+.then((result) => {
+    console.log("color chaged to blue: ", result);
+});
+
+
+
+// ASYNC FUNCTION
+
+async function greet() {
+    throw "404 page not found"; // used to throw an ERROR
+    return "hello world";
+}
+
+greet("hello")
+.then((result) => {
+    console.log("promise was resolved:");
+    console.log("result was resolved:", result);
+})
+.catch((error) => {
+    console.log("promise was rejected: ", error);
+})
+
+// async in arrow function
+
+let demo = async () => {
+    return 5;
+};
+
+// AWAIT KEYWORD
+
+function getNum() {
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            let num = Math.floor(Math.random() * 10) + 1;
+            console.log(num);
+            resolve();
+        }, 1000);
+    });
+}
+
+async function demo() {
+    await getNum();
+    await getNum();
+    await getNum();
+    await getNum();
+    await getNum();
+}
+
+
+//  REFRACTING OLD COLOR CODE WITH ASYNC & AWAIT
+
+h1 = document.querySelector("h1");
+
+function changeColor(color,delay){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            h1.style.color = color;
+            console.log(`color changed to ${color}!`);
+            resolve("color changed!");
+        }, delay);
+    });
+}
+
+async function demo() {
+    await changeColor("red", 1000);
+    await changeColor("orange", 1000);
+    await changeColor("green", 1000);
+    changeColor("blue", 1000);
+}
